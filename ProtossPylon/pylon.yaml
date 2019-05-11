@@ -1,0 +1,6 @@
+<<: !include ../base.yaml
+
+esphome:
+  name: pylon
+  platform: ESP8266
+  board: d1_mini
