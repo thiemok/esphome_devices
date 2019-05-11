@@ -1,11 +1,7 @@
 <<: !include ../base.yaml
 
-substitutions:
-  device_name: bed_room_climate
-  room_name: "Bed Room"
-
 esphome:
-  name: ${device_name}
+  name: ${device_name_lower}_climate
   platform: ESP8266
   board: d1_mini
 
@@ -14,18 +10,20 @@ i2c:
   scl: D3
 
 sensor:
+  - platform: uptime
+    name: ${device_name_lower}_climate Uptime Sensor
   - platform: adc
     pin: VCC
-    name: ${device_name} VCC Voltage
+    name: ${device_name_lower}_climate VCC Voltage
   - platform: dht
     model: DHT11
     pin: D0
     temperature:
-      name: "${room_name} Temperature"
+      name: "${device_name_upper} Temperature"
     humidity:
-      name: "${room_name} Humidity"
+      name: "${device_name_upper} Humidity"
     update_interval: 120s
   - platform: tsl2561
-    name: "${room_name} Ambient Light"
+    name: "${device_name_upper} Ambient Light"
     address: 0x39
     update_interval: 120s
