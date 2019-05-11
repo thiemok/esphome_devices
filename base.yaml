@@ -15,13 +15,17 @@ mqtt:
 ota:
   password: !secret ota_passwd
 
+sensor:
+  - platform: uptime
+    name: ${device_name} Uptime Sensor
+
 text_sensor:
   - platform: version
-    name: "ESPHome Version"
+    name: ${device_name} ESPHome Version
   - platform: wifi_info
     ip_address:
-      name: ESP IP Address
+      name: ${device_name} ESP IP Address
     ssid:
-      name: ESP Connected SSID
+      name: ${device_name} ESP Connected SSID
     bssid:
-      name: ESP Connected BSSID
+      name: ${device_name} ESP Connected BSSID

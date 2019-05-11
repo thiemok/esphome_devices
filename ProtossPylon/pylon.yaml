@@ -1,6 +1,9 @@
 <<: !include ../base.yaml
 
+substitutions:
+  device_name: pylon
+
 esphome:
-  name: pylon
+  name: ${device_name}
   platform: ESP8266
   board: d1_mini
