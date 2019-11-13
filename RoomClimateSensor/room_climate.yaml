@@ -10,14 +10,9 @@ i2c:
   scl: D3
 
 sensor:
-  - platform: uptime
-    name: ${device_name_lower}_climate Uptime Sensor
-  - platform: adc
-    pin: VCC
-    name: ${device_name_lower}_climate VCC Voltage
   - platform: dht
-    model: DHT11
-    pin: D0
+    model: DHT22
+    pin: D5
     temperature:
       name: "${device_name_upper} Temperature"
     humidity:

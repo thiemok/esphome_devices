@@ -5,7 +5,8 @@ wifi:
   domain: !secret wifi_domain
 
 # Enable logging
-#logger:
+logger:
+  level: WARN
 
 mqtt:
   broker: !secret mqtt_broker
@@ -15,13 +16,13 @@ mqtt:
 ota:
   password: !secret ota_passwd
 
-text_sensor:
-  - platform: version
-    name: ESPHome Version
-  - platform: wifi_info
-    ip_address:
-      name: ${device_name_lower} ESP IP Address
-    ssid:
-      name: ${device_name_lower} ESP Connected SSID
-    bssid:
-      name: ${device_name_lower} ESP Connected BSSID
+#text_sensor:
+#  - platform: version
+#    name: ESPHome Version
+#  - platform: wifi_info
+#    ip_address:
+#      name: ${device_name_lower} ESP IP Address
+#    ssid:
+#      name: ${device_name_lower} ESP Connected SSID
+#    bssid:
+#      name: ${device_name_lower} ESP Connected BSSID
