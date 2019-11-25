@@ -1,0 +1,91 @@
+<<: !include ../base.yaml
+
+esphome:
+  name: ${device_name_lower}
+  platform: ESP8266
+  board: d1_mini
+  includes:
+    - ../Washer/touch_button_trigger.h
+
+switch:
+  # Momentary Switch for maschine start
+  - platform: custom
+    switches:
+      name: ${device_name_upper} Start Button
+      id: start_switch
+    lambda: |-
+      auto c_switch = new TouchButtonTrigger();
+      App.register_component(c_switch);
+      return { c_switch };
+
+output:
+  # Enable pins for Photoresistors
+  - platform: gpio
+    pin: D8
+    id: sensor_enable_0
+    inverted: True
+  - platform: gpio
+    pin: D7
+    id: sensor_enable_1
+    inverted: True
+  - platform: gpio
+    pin: D6
+    id: sensor_enable_2
+    inverted: True
+  - platform: gpio
+    pin: D5
+    id: sensor_enable_3
+    inverted: True
+
+sensor:
+  # ADC sensor for Photoresistor readings
+  - platform: adc
+    pin: A0
+    id: adc_in
+    internal: True
+    filters:
+      - multiply: 3.3
+
+text_sensor:
+  - platform: template
+    name: ${device_name_upper} State
+    update_interval: 60s
+    lambda: |-
+      std::string state = "Ready";
+      float threshold = 1.7;
+
+      id(sensor_enable_0).turn_on();
+      delay(20);
+      id(adc_in).update();
+      id(sensor_enable_0).turn_off();
+      if(id(adc_in).state < threshold) {
+        return { "Washing" };
+      }
+
+      id(sensor_enable_1).turn_on();
+      delay(20);
+      id(adc_in).update();
+      id(sensor_enable_1).turn_off();
+      if(id(adc_in).state < threshold) {
+        return { "Rinsing" };
+      }
+
+      id(sensor_enable_2).turn_on();
+      delay(20);
+      id(adc_in).update();
+      id(sensor_enable_2).turn_off();
+      if(id(adc_in).state < threshold) {
+        return { "Spinning" };
+      }
+
+      id(sensor_enable_3).turn_on();
+      delay(20);
+      id(adc_in).update();
+      id(sensor_enable_3).turn_off();
+      if(id(adc_in).state < threshold) {
+        id(start_switch).turn_off();
+        return { "Done" };
+      }
+
+      id(start_switch).turn_off();
+      return { state };
