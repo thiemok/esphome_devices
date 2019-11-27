@@ -5,11 +5,11 @@ esphome:
   includes:
     - ../src/Washer/touch_button_trigger.h
 
-logger: !include ../Base/logger.yaml
+logger: !include ../Common/logger.yaml
 
-mqtt: !include ../Base/mqtt.yaml
+mqtt: !include ../Common/mqtt.yaml
 
-ota: !include ../Base/ota.yaml
+ota: !include ../Common/ota.yaml
 
 output:
   # Enable pins for Photoresistors
@@ -31,7 +31,7 @@ output:
     inverted: True
 
 sensor:
-  - <<: !include ../Base/sensor/wifi_rssi.yaml
+  - <<: !include ../Common/sensor/wifi_rssi.yaml
   # ADC sensor for Photoresistor readings
   - platform: adc
     pin: A0
@@ -52,8 +52,8 @@ switch:
       return { c_switch };
 
 text_sensor:
-  - <<: !include ../Base/text_sensor/version.yaml
-  - <<: !include ../Base/text_sensor/wifi_info.yaml
+  - <<: !include ../Common/text_sensor/version.yaml
+  - <<: !include ../Common/text_sensor/wifi_info.yaml
   - platform: template
     name: ${device_name_upper} State
     update_interval: 60s
@@ -97,4 +97,4 @@ text_sensor:
       id(start_switch).turn_off();
       return { state };
 
-wifi: !include ../Base/wifi.yaml
+wifi: !include ../Common/wifi.yaml

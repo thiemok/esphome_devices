@@ -14,13 +14,13 @@ binary_sensor:
     on_press:
       - switch.toggle: relay
 
-logger: !include ../Base/logger.yaml
+logger: !include ../Common/logger.yaml
 
-mqtt: !include ../Base/mqtt.yaml
+mqtt: !include ../Common/mqtt.yaml
 
-ota: !include ../Base/ota.yaml
+ota: !include ../Common/ota.yaml
 
-sensor: !include_dir_list ../Base/sensor
+sensor: !include_dir_list ../Common/sensor
 
 status_led:
   pin:
@@ -33,6 +33,6 @@ switch:
     pin: GPIO12
     id: relay
 
-text_sensor: !include_dir_list ../Base/text_sensor
+text_sensor: !include_dir_list ../Common/text_sensor
 
-wifi: !include ../Base/wifi.yaml
+wifi: !include ../Common/wifi.yaml
