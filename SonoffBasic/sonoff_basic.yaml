@@ -12,6 +12,7 @@ binary_sensor:
       mode: INPUT_PULLUP
       inverted: True
     name: "${device_name_upper} Button"
+    internal: True
     on_press:
       - switch.toggle: relay
 
