@@ -1,2 +1,2 @@
 platform: version
-name: ESPHome Version
+name: ${device_name_lower} ESPHome Version
