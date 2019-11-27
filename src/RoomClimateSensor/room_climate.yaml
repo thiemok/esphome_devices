@@ -28,6 +28,6 @@ sensor:
     address: 0x39
     update_interval: 120s
 
-text_sensor: !include_dir_list ../Base/text_sensor.yaml
+text_sensor: !include_dir_list ../Base/text_sensor
 
 wifi: !include ../Base/wifi.yaml

@@ -33,6 +33,6 @@ switch:
     pin: GPIO12
     id: relay
 
-text_sensor: !include_dir_list ../Base/text_sensor.yaml
+text_sensor: !include_dir_list ../Base/text_sensor
 
 wifi: !include ../Base/wifi.yaml
