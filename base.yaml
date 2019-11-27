@@ -26,6 +26,8 @@ text_sensor:
       name: ${device_name_lower} ESP Connected SSID
     bssid:
       name: ${device_name_lower} ESP Connected BSSID
+
+sensor:
   - platform: wifi_signal
     name: ${device_name_lower} ESP RSSI
     update_internal: 120s
