@@ -1,0 +1,19 @@
+substitutions:
+  device_name: pylon
+
+esphome:
+  name: ${device_name}
+  platform: ESP8266
+  board: d1_mini
+
+logger: !include ../Base/logger.yaml
+
+mqtt: !include ../Base/mqtt.yaml
+
+ota: !include ../Base/ota.yaml
+
+sensor: !include_dir_list ../Base/sensor
+
+text_sensor: !include_dir_list ../Base/text_sensor
+
+wifi: !include ../Base/wifi.yaml

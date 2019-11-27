@@ -1,0 +1,7 @@
+platform: wifi_info
+ip_address:
+  name: ${device_name_lower} ESP IP Address
+ssid:
+  name: ${device_name_lower} ESP Connected SSID
+bssid:
+  name: ${device_name_lower} ESP Connected BSSID

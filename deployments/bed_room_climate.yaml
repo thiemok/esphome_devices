@@ -2,4 +2,4 @@ substitutions:
   device_name_lower: bed_room
   device_name_upper: "Bed Room"
 
-<<: !include ../RoomClimateSensor/room_climate.yaml
+<<: !include ../src/RoomClimateSensor/room_climate.yaml

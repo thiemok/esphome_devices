@@ -1,0 +1,4 @@
+ssid: !secret wifi_ssid
+password: !secret wifi_psk
+fast_connect: true
+domain: !secret wifi_domain

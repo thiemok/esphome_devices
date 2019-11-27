@@ -1,22 +1,15 @@
-<<: !include ../base.yaml
-
 esphome:
   name: ${device_name_lower}
   platform: ESP8266
   board: d1_mini
   includes:
-    - ../Washer/touch_button_trigger.h
+    - ../src/Washer/touch_button_trigger.h
 
-switch:
-  # Momentary Switch for maschine start
-  - platform: custom
-    switches:
-      name: ${device_name_upper} Start Button
-      id: start_switch
-    lambda: |-
-      auto c_switch = new TouchButtonTrigger();
-      App.register_component(c_switch);
-      return { c_switch };
+logger: !include ../Base/logger.yaml
+
+mqtt: !include ../Base/mqtt.yaml
+
+ota: !include ../Base/ota.yaml
 
 output:
   # Enable pins for Photoresistors
@@ -38,6 +31,7 @@ output:
     inverted: True
 
 sensor:
+  - <<: !include ../Base/sensor/wifi_rssi.yaml
   # ADC sensor for Photoresistor readings
   - platform: adc
     pin: A0
@@ -46,7 +40,20 @@ sensor:
     filters:
       - multiply: 3.3
 
+switch:
+  # Momentary Switch for maschine start
+  - platform: custom
+    switches:
+      name: ${device_name_upper} Start Button
+      id: start_switch
+    lambda: |-
+      auto c_switch = new TouchButtonTrigger();
+      App.register_component(c_switch);
+      return { c_switch };
+
 text_sensor:
+  - <<: !include ../Base/text_sensor/version.yaml
+  - <<: !include ../Base/text_sensor/wifi_info.yaml
   - platform: template
     name: ${device_name_upper} State
     update_interval: 60s
@@ -89,3 +96,5 @@ text_sensor:
 
       id(start_switch).turn_off();
       return { state };
+
+wifi: !include ../Base/wifi.yaml

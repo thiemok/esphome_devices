@@ -2,7 +2,7 @@
 **/.pioenvs/
 **/.piolibdeps/
 **/lib/
-**/src/
+./**/src/
 **/platformio.ini
 secrets.yaml
 

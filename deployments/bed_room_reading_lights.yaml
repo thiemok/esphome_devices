@@ -2,4 +2,4 @@ substitutions:
   device_name_lower: bed_room_reading_lights
   device_name_upper: "Bed Room Reading Lights"
 
-<<: !include ../SonoffBasic/sonoff_basic.yaml
+<<: !include ../src/SonoffBasic/sonoff_basic.yaml
