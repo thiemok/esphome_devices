@@ -1,0 +1,48 @@
+esphome:
+  name: ${device_name_lower}_switch
+  platform: ESP8266
+  board: esp01_1m
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${device_name_upper} Button"
+    internal: True
+    on_press:
+      - switch.toggle: relay
+
+logger: !include ../Common/logger.yaml
+
+mqtt: !include ../Common/mqtt.yaml
+
+output:
+  - platform: esp8266_pwm
+    id: relay_status
+    pin:
+      number: GPIO13
+      inverted: True
+
+ota: !include ../Common/ota.yaml
+
+sensor: !include_dir_list ../Common/sensor
+
+switch:
+  - platform: gpio
+    name: "${device_name_upper} Relay"
+    pin: GPIO12
+    id: relay
+    on_turn_on:
+      - output.set_level:
+          id: relay_status
+          level: 50%
+    on_turn_off:
+      - output.set_level:
+          id: relay_status
+          level: 0%
+
+text_sensor: !include_dir_list ../Common/text_sensor
+
+wifi: !include ../Common/wifi.yaml

@@ -2,4 +2,4 @@ substitutions:
   device_name_lower: hifi
   device_name_upper: "Hifi Switch"
 
-<<: !include ../src/SonoffBasic/sonoff_basic.yaml
+<<: !include ../src/Sonoff/sonoff_basic.yaml
