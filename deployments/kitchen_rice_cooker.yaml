@@ -1,0 +1,5 @@
+substitutions:
+  device_name_lower: kitchen_rice_cooker
+  device_name_upper: "Kitchen Rice Cooker"
+
+<<: !include ../src/Sonoff/sonoff_s20.yaml
