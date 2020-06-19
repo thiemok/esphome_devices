@@ -1,0 +1,5 @@
+substitutions:
+  device_name_lower: bed_room_tv_steamlink
+  device_name_upper: "Bed Room TV Steamlink"
+
+<<: !include ../src/Sonoff/sonoff_s20.yaml
