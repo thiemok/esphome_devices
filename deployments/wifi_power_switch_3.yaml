@@ -1,0 +1,5 @@
+substitutions:
+  device_name_lower: wifi_power_switch_3
+  device_name_upper: "Wifi Power Switch 3"
+
+<<: !include ../src/Sonoff/sonoff_s20.yaml

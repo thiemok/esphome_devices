@@ -1,1 +1,2 @@
 password: !secret ota_passwd
+platform: esphome
