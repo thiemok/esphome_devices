@@ -1,5 +1,0 @@
-substitutions:
-  device_name_lower: bed_room_reading_lights
-  device_name_upper: "Bed Room Reading Lights"
-
-<<: !include ../src/Sonoff/sonoff_basic.yaml

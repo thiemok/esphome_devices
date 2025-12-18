@@ -1,5 +1,0 @@
-substitutions:
-  device_name_lower: bed_room
-  device_name_upper: "Bed Room"
-
-<<: !include ../src/RoomClimateSensor/room_climate.yaml
