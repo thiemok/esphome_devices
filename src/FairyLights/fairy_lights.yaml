@@ -1,0 +1,28 @@
+esphome:
+  name: ${device_name_lower}
+
+esp8266:
+  board: d1_mini
+
+logger: !include ../Common/logger.yaml
+
+mqtt: !include ../Common/mqtt.yaml
+
+ota: !include ../Common/ota.yaml
+
+wifi: !include ../Common/wifi.yaml
+
+output:
+  - platform: esp8266_pwm
+    pin: D6
+    id: d_6
+  - platform: esp8266_pwm
+    pin: D7
+    id: d_7
+
+light:
+  - platform: hbridge
+    id: mainlight
+    name: ${device_name_upper} Light
+    pin_a: d_6
+    pin_b: d_7

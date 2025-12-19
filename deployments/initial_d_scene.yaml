@@ -1,0 +1,5 @@
+substitutions:
+  device_name_lower: initial_d_scene
+  device_name_upper: "Initial D Scene"
+
+<<: !include ../src/FairyLights/fairy_lights.yaml
